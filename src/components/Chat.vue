@@ -1,7 +1,7 @@
 <template lang="pug">
   section#chat
     h2 Chat
-    ul
+    ul(v-chat-scroll)
       li(v-for="message in messages")
         span {{message.name}}
         span {{message.content}}
