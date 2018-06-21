@@ -12,6 +12,7 @@
 <script>
 import NewMessage from '@/components/NewMessage'
 import db from '@/firebase/init'
+import moment from 'moment'
 
 export default {
   name: 'Chat',
@@ -34,7 +35,7 @@ export default {
             id: change.doc.id,
             name: change.doc.data().name,
             content: change.doc.data().content,
-            timestamp: change.doc.data().timestamp
+            timestamp: moment(change.doc.data().timestamp).locale('pl').format('L' + ' ' + 'LTS')
           })
         }
       })
@@ -46,6 +47,8 @@ export default {
 <style lang="stylus" scoped>
   section#chat
     ul
+      max-height 300px
+      overflow auto
       li
         span
           display block
